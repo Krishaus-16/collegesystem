@@ -9,6 +9,11 @@
     { "src": "app.js", "use": "@vercel/static" },
     { "src": "styles.css", "use": "@vercel/static" }
   ],
+  "rewrites": [
+    { "source": "/api/health", "destination": "/api/health.js" },
+    { "source": "/api/complaints", "destination": "/api/complaints/index.js" },
+    { "source": "/api/complaints/:id", "destination": "/api/complaints/[id].js?id=:id" }
+  ],
   "cleanUrls": true,
   "trailingSlash": false
 }
