@@ -1,0 +1,13 @@
+{
+  "name": "campuscare-complaint-management",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A local-first campus complaint management demo.",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.10",
+    "mongodb": "^7.9.1"
+  }
+}
