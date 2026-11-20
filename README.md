@@ -18,6 +18,19 @@ A responsive college complaint management app with a Node.js REST API and MongoD
 
 Run the app through the server so its API is available to the browser.
 
+## Deploy to Vercel
+
+1. Push this repository to GitHub and import `Krishaus-16/collegesystem` from the Vercel dashboard.
+2. Keep the project root as the Root Directory. Vercel serves the static frontend and deploys the handlers in `api/` as serverless functions; no custom build command or output directory is needed.
+3. In the Vercel project settings, add these environment variables for Production (and Preview if needed):
+   - `MONGODB_URI` - a current MongoDB Atlas connection string. Rotate any password that has been shared or exposed, and enter the replacement directly in Vercel settings.
+   - `MONGODB_DB` - `collegesystem` (or your chosen database)
+   - `MONGODB_COLLECTION` - `complaints`
+4. In Atlas Network Access, allow connections from your deployment. For production, use an appropriate fixed-egress/network setup rather than opening database access broadly.
+5. Redeploy after adding environment variables, then verify `https://<your-vercel-domain>/api/health` returns `status: ok`.
+
+Do not upload `.env` to GitHub or Vercel. The Vercel deployment uses the same REST endpoints as the local app, implemented as serverless functions under `api/`.
+
 ## Features
 
 - Student portal form with required-field validation and automatic unique complaint IDs.
@@ -34,6 +47,8 @@ Run the app through the server so its API is available to the browser.
 - `styles.css` - responsive visual design
 - `app.js` - frontend validation, local category suggestions, and API interactions
 - `server.js` - static file server and MongoDB-backed REST API
+- `api/` - Vercel serverless API handlers and shared MongoDB connection
+- `vercel.json` - Vercel static-site configuration
 - `.env.example` - MongoDB connection configuration template
 
 ## Data note
